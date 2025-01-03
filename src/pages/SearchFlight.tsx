@@ -442,7 +442,7 @@ export const SearchFlight = () => {
   const [showResults, setShowResults] = useState(false);
   const [availableFlights, setAvailableFlights] = useState<ReturnType<typeof generateFlightSchedules>>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [searchError, setSearchError] = useState<string | null>(null);
+  // const [searchError, setSearchError] = useState<string | null>(null);
 
   const handleSwap = () => {
     setSearchData(prev => ({
@@ -459,7 +459,7 @@ export const SearchFlight = () => {
     }
 
     setIsLoading(true);
-    setSearchError(null);
+    // setSearchError(null);
 
     try {
       const fromCode = typeof searchData.from === 'string' 
@@ -471,7 +471,7 @@ export const SearchFlight = () => {
         : typeof searchData.to === 'object' && 'code' in searchData.to ? (searchData.to as { code: string }).code : '';
 
       if (fromCode === toCode) {
-        setSearchError('Source and destination cannot be the same');
+        //setSearchError('Source and destination cannot be the same');
         setIsLoading(false);
         return;
       }
@@ -479,14 +479,14 @@ export const SearchFlight = () => {
       const flights = generateFlightSchedules(fromCode, toCode, searchData.date);
 
       if (flights.length === 0) {
-        setSearchError('No flights available for this route');
+        //setSearchError('No flights available for this route');
       } else {
         setAvailableFlights(flights);
         setShowResults(true);
       }
     } catch (error) {
       console.error('Error searching flights:', error);
-      setSearchError('Error searching flights. Please try again.');
+      //setSearchError('Error searching flights. Please try again.');
     } finally {
       setIsLoading(false);
     }

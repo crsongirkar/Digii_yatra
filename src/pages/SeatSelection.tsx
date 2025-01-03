@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons';
 import {
   Typography,
 } from '@mui/material';
-// Replace `@/lib/utils` with your actual utility library or define `cn` manually
 import clsx from 'clsx'; 
 import { useFlightContext } from '../context/FlightContext';
 
